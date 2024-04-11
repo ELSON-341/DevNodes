@@ -33,7 +33,7 @@ header {
     padding: 10px;
     font-weight: bold;
     color: #ddd;
-    width: 400px;
+    width: 100px;
 }
 
 #search-container input::placeholder {
@@ -44,7 +44,106 @@ header {
     background-color: #333;
     border: 2px solid white;
     border-radius: 4px;
-    padding: 5px;
+    padding: 4px;
     cursor: pointer;
     color: white;
+    padding: 5px 15px;
+    transition: 0.4s;
+}              
+
+#exports-notes:hover {
+    background-color: white;
+    color: #333;
+}
+
+#add-node-container {
+    display: flex;
+    color: red;
+    width: 400px;                         
+    margin: 1rem auto 0;
+    gap: 1rem;
+}
+
+#add-node-container input,
+#add-node-container button {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#add-node-container input {
+    background-color: transparent;
+    flex: 1;
+    border: 1px solid #525356;
+}
+
+#add-node-container button {
+    background-color: #333;
+    cursor: pointer;
+    color: white;
+    border: 1px solid black;
+}
+
+#notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.note {
+    min-height: 200px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #202124;
+    color: white;
+    position: relative;
+}
+
+.note textarea {
+    background-color: transparent;
+    resize: none;
+    color: white;
+    border: none;
+    height: 100%;
+    outline: none;
+}
+
+.note .bi-pin {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: #333;
+    border-radius: 3px;
+}
+.note:hover i {
+    opacity: 1;
+}
+
+.note .bi-x-lg,
+.note .bi-file-earmark-plus {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 5px;
+    font-size: 0.9rem;
+    color: #555;
+    transition: 0.3s;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.note .bi-file-earmark-plus {
+    top: 40px;
+}
+
+.note .bi-x-lg:hover,
+.note .bi-file-earmark-plus:hover {
+    color: white;
+}
+
+.note.fixed {
+    background-color: #3c3c3f;
 }

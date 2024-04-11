@@ -33,7 +33,7 @@ header {
     padding: 10px;
     font-weight: bold;
     color: #ddd;
-    width: 100px;
+    width: 400px;
 }
 
 #search-container input::placeholder {

@@ -1,0 +1,23 @@
+/* Mobile */
+@media(max-width: 680px) {
+    header {
+        padding: 1rem 1rem;
+        background-color: red;
+    }
+
+    header h1 {
+        font-size: 1rem;
+    }
+
+    /* header > #search-container {
+    
+    }         */
+
+    #search-container {
+        width: 100px;
+    }
+
+    #search-container input {
+        width: 50px;
+    }
+}

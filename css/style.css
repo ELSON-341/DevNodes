@@ -14,10 +14,11 @@ body {
 header {
     display: flex;
     padding: 1rem 2rem;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid #ccc;
     color: white;
+    gap: 10px;
 }
 
 #search-container {
@@ -59,7 +60,7 @@ header {
 #add-node-container {
     display: flex;
     color: red;
-    width: 400px;                         
+    max-width: 400px;                         
     margin: 1rem auto 0;
     gap: 1rem;
 }
@@ -85,7 +86,7 @@ header {
 
 #notes-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 250px);
+    grid-template-columns: repeat(auto-fill, 270px);
     padding: 2rem;
     gap: 2rem;
 }

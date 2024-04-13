@@ -13,7 +13,7 @@
     }
 
     #search-container {
-        width: 300px;
+        max-width: 350px;
         position: absolute;
         bottom: 10px;
         margin: 1rem auto;

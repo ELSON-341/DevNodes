@@ -75,6 +75,7 @@ header {
     background-color: transparent;
     flex: 1;
     border: 1px solid #525356;
+    color: white;
 }
 
 #add-node-container button {
@@ -119,6 +120,7 @@ header {
     background-color: #333;
     border-radius: 3px;
 }
+
 .note:hover i {
     opacity: 1;
 }

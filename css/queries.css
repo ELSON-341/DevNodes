@@ -1,5 +1,5 @@
 /* Mobile */
-@media(max-width: 680px) {
+@media(max-width: 780px) {
     header {
         height: 8rem;
         position: relative;
@@ -12,7 +12,7 @@
     }
 
     #search-container {
-        min-width: 89.8%;
+        min-width: 60%;
         position: absolute;
         bottom: 10px;
         margin: 1rem auto;
@@ -38,5 +38,29 @@
     #notes-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, 100%);
+    }
+}
+
+@media(max-width: 400px) {
+    header {
+        padding: 0 5px;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+        position: absolute;
+        top: 15%;
+        left: 10px;
+    }
+
+    #search-container {
+        width: 90%;
+    }
+
+    #exports-notes {
+        font-size: 11px;
+        position: absolute;
+        top: 15%;
+        right: 19px;
     }
 }

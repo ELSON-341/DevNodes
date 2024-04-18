@@ -75,8 +75,10 @@ const toggleFixdNote = (id) => {
 // Local storage
 const getNotes = () => {
     const notes = JSON.parse(localStorage.getItem('notes') || "[]")
+
+    const orderedNote = notes.sort((a, b) => a.fixed > b.fixed ? -1 : 0)
     
-    return notes
+    return orderedNote
 }
 
 const seveNotes = (notes) => {

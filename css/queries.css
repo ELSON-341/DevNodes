@@ -1,5 +1,4 @@
-/* Mobile */
-@media(max-width: 780px) {
+@media(max-width: 807px) {
     header {
         height: 8rem;
         position: relative;
@@ -12,17 +11,13 @@
     }
 
     #search-container {
-        min-width: 60%;
+        width: 60%;
         position: absolute;
         bottom: 10px;
         margin: 1rem auto;
         flex-direction: row-reverse;
     }
 
-    #search-container input {
-        width: 100%;
-        font-size: 13px;
-    }
 
     #exports-notes {
         position: absolute;
@@ -34,14 +29,9 @@
     #add-node-container {
         width: 90%;
     }
-
-    #notes-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 100%);
-    }
 }
 
-@media(max-width: 400px) {
+@media(max-width: 635px) {
     header {
         padding: 0 5px;
     }
@@ -62,5 +52,10 @@
         position: absolute;
         top: 15%;
         right: 19px;
+    }
+
+    #notes-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 100%);
     }
 }

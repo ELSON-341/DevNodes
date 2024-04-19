@@ -39,27 +39,35 @@ const addNote = () => {
 const createId = () => Math.floor(Math.random() * 5000)
 
 const createNote = (id, content, fixed) => {
-    const Element = document.createElement('div')
-    Element.classList.add('note')
+    const element = document.createElement('div')
+    element.classList.add('note')
 
     const textarea = document.createElement('textarea')
     textarea.value = content
     textarea.placeholder = "Adicione algum texto"
     
-    Element.appendChild(textarea)
+    element.appendChild(textarea)
 
     const pinIcon = document.createElement('i')
     pinIcon.classList.add(...['bi', 'bi-pin'])
-    Element.appendChild(pinIcon)
+    element.appendChild(pinIcon)
+
+    const deleteTIcon = document.createElement('i')
+    deleteTIcon.classList.add(...['bi', 'bi-x-lg'])
+    element.appendChild(deleteTIcon)
+    
+    const duplicateIcon = document.createElement('i')
+    duplicateIcon.classList.add(...['bi', 'bi-file-earmark-plus'])
+    element.appendChild(duplicateIcon)
+    
+    if(fixed) element.classList.add('fixed')
 
     // Elventos do elemento
-    Element.querySelector('.bi-pin').addEventListener('click', () => {
-        toggleFixdNote(id)
-    })
+    element.querySelector('.bi-pin').addEventListener('click', () => toggleFixdNote(id))
+    element.querySelector('.bi-x-lg').addEventListener('click', () => deleteNote(id, element))
+    element.querySelector('.bi-file-earmark-plus').addEventListener('click', () => copyNote(id))
 
-    if(fixed) Element.classList.add('fixed')
-
-    return Element
+    return element
 }
 
 const toggleFixdNote = (id) => {
@@ -72,12 +80,37 @@ const toggleFixdNote = (id) => {
     showNotes()
 }
 
+const deleteNote = (id, element) => {
+    const notes = getNotes().filter((note) => note.id !== id)
+    
+    seveNotes(notes)
+
+    notesContainer.removeChild(element)
+}
+
+const copyNote = (id) => {
+    const notes = getNotes()
+    const targetNote = notes.filter((note) => note.id === id)[0]
+
+    const noteObject = {
+        id: createId(),
+        content:targetNote.content,
+        fixed: false,
+    }
+
+    const noteElement = createNote(noteObject.id, noteObject.content, noteObject.fixed)
+
+    notesContainer.appendChild(noteElement)
+    notes.push(noteObject)
+    seveNotes(notes)
+}
+
 // Local storage
 const getNotes = () => {
     const notes = JSON.parse(localStorage.getItem('notes') || "[]")
 
     const orderedNote = notes.sort((a, b) => a.fixed > b.fixed ? -1 : 0)
-    
+
     return orderedNote
 }
 

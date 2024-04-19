@@ -31,7 +31,7 @@
     }
 }
 
-@media(max-width: 635px) {
+@media(max-width: 620px) {
     header {
         padding: 0 5px;
     }

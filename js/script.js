@@ -1,17 +1,21 @@
+'use strict'
+
 // Elementos
 const notesContainer = document.querySelector('#notes-container')
 const noteInput = document.querySelector('#note-content')
 const addNoteBtn = document.querySelector('.add-note')
+const searchInput = document.querySelector('#search-input')
 
 // funçãoes
 const showNotes = () => {
     cleanNotes()
-
+    
     getNotes().forEach((note) => {
         const noteElement = createNote(note.id, note.content, note.fixed)
         notesContainer.appendChild(noteElement)
     })
-}
+    }
+
 
 const cleanNotes = () => {
     notesContainer.replaceChildren([])
@@ -63,6 +67,10 @@ const createNote = (id, content, fixed) => {
     if(fixed) element.classList.add('fixed')
 
     // Elventos do elemento
+    element.querySelector('textarea').addEventListener('keyup', (e) => {
+        const noteContent = e.target.value
+        updateNote(id, noteContent)
+    })
     element.querySelector('.bi-pin').addEventListener('click', () => toggleFixdNote(id))
     element.querySelector('.bi-x-lg').addEventListener('click', () => deleteNote(id, element))
     element.querySelector('.bi-file-earmark-plus').addEventListener('click', () => copyNote(id))
@@ -105,11 +113,20 @@ const copyNote = (id) => {
     seveNotes(notes)
 }
 
+const updateNote = (id, newContent) => {
+    const notes = getNotes()
+
+    const targetNote = notes.filter((note) => note.id === id)[0]
+    targetNote.content = newContent
+
+    seveNotes(notes)
+}
+
 // Local storage
 const getNotes = () => {
     const notes = JSON.parse(localStorage.getItem('notes') || "[]")
 
-    const orderedNote = notes.sort((a, b) => a.fixed > b.fixed ? -1 : 0)
+    const orderedNote = notes.sort((a, b) => a.fixed > b.fixed ? -1 : 1)
 
     return orderedNote
 }
@@ -118,8 +135,19 @@ const seveNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes))
 }
 
+const searchNotes = (search) => {
+    const searchResults = getNotes().filter((note) => {
+        note.content.incluides(search)
+    })
+}
+
+
 // Eventos
 addNoteBtn.addEventListener('click', () => addNote())
 
+searchInput.addEventListener('keyup', (e) => {
+    const search = e.target
+    searchNotes(search)
+}) 
 // Inicialização
 showNotes()

@@ -129,7 +129,7 @@ const getNotes = () => {
     const orderedNote = notes.sort((a, b) => a.fixed > b.fixed ? -1 : 1)
 
     return orderedNote
-}
+}   
 
 const seveNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes))
@@ -137,8 +137,23 @@ const seveNotes = (notes) => {
 
 const searchNotes = (search) => {
     const searchResults = getNotes().filter((note) => {
-        note.content.incluides(search)
+        return note.content.includes(search)
     })
+
+    console.log(search);
+
+    if(search !== '') {
+        cleanNotes()
+        
+        searchResults.forEach((note) => {
+            const noteElement = createNote(note.id, note.content)
+            notesContainer.appendChild(noteElement)
+        })
+        return
+    }
+
+    cleanNotes()
+    showNotes()
 }
 
 
@@ -146,8 +161,16 @@ const searchNotes = (search) => {
 addNoteBtn.addEventListener('click', () => addNote())
 
 searchInput.addEventListener('keyup', (e) => {
-    const search = e.target
+    const search = e.target.value
     searchNotes(search)
-}) 
+})
+
+noteInput.addEventListener('keydown', (e) => {
+    console.log(e.key);
+    if(e.key === "Enter") addNote()
+})
+
 // Inicialização
 showNotes()
+
+'e'.toUpperCase()

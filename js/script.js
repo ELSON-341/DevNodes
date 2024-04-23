@@ -122,6 +122,21 @@ const updateNote = (id, newContent) => {
     seveNotes(notes)
 }
 
+const searchNote = (search) => {
+    const notes = document.querySelectorAll('.note')
+    const upperCaseSaerch = search.toUpperCase()
+    
+    notes.forEach((note) => {
+        const textareaValue = note.querySelector('textarea').value.toUpperCase()
+
+        if(upperCaseSaerch === '') showNotes()
+
+        if(!textareaValue.includes(upperCaseSaerch)) {
+            note.classList.add('hide')
+        }
+    })
+}
+
 // Local storage
 const getNotes = () => {
     const notes = JSON.parse(localStorage.getItem('notes') || "[]")
@@ -135,34 +150,13 @@ const seveNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes))
 }
 
-const searchNotes = (search) => {
-    const searchResults = getNotes().filter((note) => {
-        return note.content.includes(search)
-    })
-
-    console.log(search);
-
-    if(search !== '') {
-        cleanNotes()
-        
-        searchResults.forEach((note) => {
-            const noteElement = createNote(note.id, note.content)
-            notesContainer.appendChild(noteElement)
-        })
-        return
-    }
-
-    cleanNotes()
-    showNotes()
-}
-
 
 // Eventos
 addNoteBtn.addEventListener('click', () => addNote())
 
 searchInput.addEventListener('keyup', (e) => {
     const search = e.target.value
-    searchNotes(search)
+    searchNote(search)
 })
 
 noteInput.addEventListener('keydown', (e) => {

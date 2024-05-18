@@ -1,61 +1,15 @@
-@media(max-width: 807px) {
-    header {
-        height: 8rem;
-        position: relative;
-    }
+@charset "UTF-8";
 
-    header h1 {
-        position: absolute;
-        top: 10%;
-        left: 35px;
+@media(max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
     }
 
     #search-container {
-        width: 60%;
-        position: absolute;
-        bottom: 10px;
-        margin: 1rem auto;
-        flex-direction: row-reverse;
+        max-width: 100%;
+        margin: 0 auto;
+    }
     }
 
 
-    #exports-notes {
-        position: absolute;
-        top: 15%;
-        right: 35px;
-        font-size: 11px;
-    }
-
-    #add-node-container {
-        width: 90%;
-    }
-}
-
-@media(max-width: 620px) {
-    header {
-        padding: 0 5px;
-    }
-    
-    header h1 {
-        font-size: 1.5rem;
-        position: absolute;
-        top: 15%;
-        left: 10px;
-    }
-
-    #search-container {
-        width: 90%;
-    }
-
-    #exports-notes {
-        font-size: 11px;
-        position: absolute;
-        top: 15%;
-        right: 19px;
-    }
-
-    #notes-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 100%);
-    }
-}

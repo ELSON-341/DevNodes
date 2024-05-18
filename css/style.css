@@ -107,8 +107,10 @@ header {
     resize: none;
     color: white;
     border: none;
+    width: 95%;
     height: 100%;
     outline: none;
+    scrollbar-color: #4c505c  #19191d;
 }
 
 .note .bi-pin {

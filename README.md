@@ -1,5 +1,5 @@
 # DevNodes
-Delsenvolvido: HTML, css, JavaScript
+Desenvolvido: HTML, css, JavaScript
 
 Este é um site de anotações onde o usuário pode:
 

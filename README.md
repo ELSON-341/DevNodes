@@ -1,4 +1,6 @@
 # DevNodes
+Delsenvolvido: HTML, css, JavaScript
+
 Este é um site de anotações onde o usuário pode:
 
 * Criar notas
